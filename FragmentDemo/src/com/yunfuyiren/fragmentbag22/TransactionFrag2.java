@@ -33,10 +33,13 @@ public class TransactionFrag2 extends Fragment{
 				String content=et.getText().toString();
 				if(content!=null)
 				{
-					Bundle args=new Bundle();
-					args.putString("talk_title", "talkFrag1");
-					args.putCharSequence("talk_content", content);
-					
+					TransactionFrag1 tf1=(TransactionFrag1)getFragmentManager()
+							.findFragmentByTag("tfrag1");
+					TextView tv1=(TextView)tf1.getView().findViewWithTag("tfrag1");
+					tv1.setText("talk frome frag1: "+content);
+//					Bundle args=new Bundle();
+//					args.putString("talk_title", "talkFrag1");
+//					args.putCharSequence("talk_content", content);	
 				}
 			}
 			
