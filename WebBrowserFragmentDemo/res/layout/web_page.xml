@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" 
+	    android:id="@+id/RelativeLayout">
+	 <ProgressBar  
+	        android:id="@+id/pb"  
+	        style="?android:attr/progressBarStyleHorizontal"  
+	        android:layout_width="fill_parent"  
+	        android:layout_height="8dip"  
+	        android:indeterminateOnly="false"  
+	        android:max="100"  
+	        android:progressDrawable="@drawable/progress_bar_states" >  
+	 </ProgressBar>  
+	 <LinearLayout 
+	      android:layout_height="wrap_content"  
+	      android:layout_width="match_parent"
+	      android:id="@+id/Nevigator"
+	     >
+	    <EditText              
+        android:layout_width="0dip"
+        android:layout_height="match_parent"      
+       	android:layout_weight="0.8"
+        android:hint="@string/WebUrlHint"
+        android:inputType="textUri"
+        android:id="@+id/web_url_input"
+        />
+      <Button
+      	  android:layout_width="0dip"
+          android:id="@+id/web_url_goto"       
+          android:layout_height="match_parent"
+          android:layout_weight="0.2"
+          android:text="@string/webUrlGoto"
+        />
+      </LinearLayout>
+	  <WebView android:id="@+id/web_holder"
+	            android:layout_height="wrap_content"
+	            android:layout_width="match_parent"
+	            android:layout_below="@id/Nevigator"
+	  />               
+	 <Button 
+	     android:layout_height="wrap_content"
+	     android:layout_width="wrap_content"
+	     android:layout_alignParentBottom="true"
+	     android:layout_alignParentLeft="true"
+	     android:id="@+id/PreButton"
+	     android:text="上一页"
+	     android:focusable="true"  
+		 android:background="@drawable/set_selector"
+	     />
+	<Button 
+	      android:layout_height="wrap_content"
+	     android:layout_width="wrap_content"
+	     android:id="@+id/NextButton"
+	      android:layout_alignParentBottom="true"
+	     android:layout_alignParentRight="true"
+	     android:focusable="true"  
+		 android:background="@drawable/set_selector"
+	     android:text="下一页"
+	    />
+ </RelativeLayout>
+<!--  <AbsoluteLayout android:orientation="vertical" android:id="@+id/tab1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <WebView android:id="@+id/web_holder"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:layout_x="0.0dip"
+    	android:layout_y="0.0dip"
+    	android:layout_weight="1.0" />
+</AbsoluteLayout>-->
