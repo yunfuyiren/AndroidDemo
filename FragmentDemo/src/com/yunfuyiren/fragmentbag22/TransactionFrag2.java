@@ -21,21 +21,21 @@ public class TransactionFrag2 extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v=inflater.inflate(R.layout.tran_subfrag, container,false);
-		TextView tv=(TextView)v.findViewById(R.id.talkfrom);
-		final EditText et=(EditText)v.findViewById(R.id.talkcontent);
-		Button btn=(Button)v.findViewById(R.id.talkbutton);
+		View v=inflater.inflate(R.layout.tran_subfrag1, container,false);
+		final EditText et=(EditText)v.findViewById(R.id.talkcontent1);
+		Button btn=(Button)v.findViewById(R.id.talkbutton1);
 		btn.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				String content=et.getText().toString();
-				if(content!=null)
+				if(content!=null&&content!= "")
 				{
 					TransactionFrag1 tf1=(TransactionFrag1)getFragmentManager()
-							.findFragmentByTag("tfrag1");
-					TextView tv1=(TextView)tf1.getView().findViewWithTag("tfrag1");
+							.findFragmentById(R.id.tfrag1);
+					TextView tv1=(TextView)tf1.getView().findViewById(R.id.talkfrom1);
+			
 					tv1.setText("talk frome frag1: "+content);
 //					Bundle args=new Bundle();
 //					args.putString("talk_title", "talkFrag1");

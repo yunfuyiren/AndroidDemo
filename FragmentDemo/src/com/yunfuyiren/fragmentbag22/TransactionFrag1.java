@@ -21,21 +21,20 @@ public class TransactionFrag1 extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v=inflater.inflate(R.layout.tran_subfrag, container,false);
-		TextView tv=(TextView)v.findViewById(R.id.talkfrom);
-		final EditText et=(EditText)v.findViewById(R.id.talkcontent);
-		Button btn=(Button)v.findViewById(R.id.talkbutton);
+		View v=inflater.inflate(R.layout.tran_subfrag1, container,false);
+		final EditText et=(EditText)v.findViewById(R.id.talkcontent1);
+		Button btn=(Button)v.findViewById(R.id.talkbutton1);
 		btn.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				String content=et.getText().toString();
-				if(content!="")
+				if(content!=null&&content!= "")
 				{
-					TransactionFrag2 tf2=(TransactionFrag2)getFragmentManager().findFragmentByTag("tfrag2");
-					TextView tv2=(TextView)tf2.getView().findViewById(R.id.talkfrom);
-					tv2.setText("talk frome frag1: "+content);
+					TransactionFrag2 tf2=(TransactionFrag2)getFragmentManager().findFragmentById(R.id.tfrag2);
+					TextView tv2=(TextView)tf2.getView().findViewById(R.id.talkfrom1);
+					tv2.setText("talk frome frag2: "+content);
 //					Bundle args=new Bundle();
 //					args.putString("talk_title", "talkFrag1");
 //					args.putCharSequence("talk_content", content);

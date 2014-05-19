@@ -124,13 +124,20 @@ public class MainActivity extends FragmentActivity {
 						MainActivity.switchContent(fme, f3, "list3");
 						break;
 					case 4:
-						TranFragment f4;
+						TranSFragment f4;
 						if(fm.findFragmentByTag("list4")==null)
-							f4=new TranFragment();
+							f4=new TranSFragment();
 						else
-							f4=(TranFragment)fm.findFragmentByTag("list4");
+							f4=(TranSFragment)fm.findFragmentByTag("list4");
 						MainActivity.switchContent(fme, f4, "list4");
 						break;
+					case 5:
+						TranDFragment f5;
+						if(fm.findFragmentByTag("list5")==null)
+							f5=new TranDFragment();
+						else
+							f5=(TranDFragment)fm.findFragmentByTag("list5");
+						MainActivity.switchContent(fme, f5, "list5");
 					}
 				}
 			});
@@ -158,7 +165,10 @@ public class MainActivity extends FragmentActivity {
 			dlist.add(map);
 			map=new HashMap<String,Object>();
 			map.put("Image", R.drawable.pic);
-			map.put("Title","Fragments communication");
+			map.put("Title","Static Fragments communication");
+			map=new HashMap<String,Object>();
+			map.put("Image", R.drawable.pic);
+			map.put("Title", "Dynamic Fragments communication");
 			dlist.add(map);
 			return dlist;
 		}
