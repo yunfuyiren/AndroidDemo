@@ -17,7 +17,10 @@ public class MyAdapter extends BaseAdapter{
 	 private LayoutInflater inflater;// 布局填充器，它可以使用一个xml文件生成一个View对象，可以通过Context获取实例对象
 	
 	 public MyAdapter(Context context, List<People> persons, int resource) {
+<<<<<<< HEAD
 		  //通过Context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)获取LayoutInflater对象，然后可以使用inflate（）函数加载xml布局文件了
+=======
+>>>>>>> 1a3c6bad2ebc81b161edefea88da7fdb103e2bfa
 		  inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		  this.resource = resource;
 		  this.list = persons;
