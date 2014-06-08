@@ -1,7 +1,6 @@
 package com.yunfuyiren.fragment_tabhostdemo2;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -9,9 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -24,10 +20,11 @@ public class MainActivity extends FragmentActivity {
 	TabWidget tabWidget;
 	LinearLayout bottom_layout;
 	int CURRENT_TAB = 0;        //设置常量
-	Home_Fragment homeFragment;
-	Wall_Fragment wallFragment;
-	Message_Fragment messageFragment;
-	Me_Fragment meFragment;
+	Home_Fragment homeFragment;				//通知项 tab_fragment
+	CollectionSegment_Fragment collectFragment;		//收藏板块 tab_fragment
+	Top10_Fragment top10Fragment;			//十大新闻板块 tab_fragment
+	HotSegment_Fragment	hotFragment;		//热门板块 	tab_fragment
+	Me_Fragment meFragment;					//个人中心板块	 me_fragment
 	RelativeLayout tabIndicator1,tabIndicator2,tabIndicator3,tabIndicator4,tabIndicator5;
 	
 	FragmentTransaction ft;
@@ -47,8 +44,9 @@ public class MainActivity extends FragmentActivity {
 				/**管理*/
 				FragmentManager fm =getSupportFragmentManager();
 				homeFragment=(Home_Fragment)fm.findFragmentByTag("home");
-				wallFragment=(Wall_Fragment)fm.findFragmentByTag("wall");
-				messageFragment =(Message_Fragment) fm.findFragmentByTag("message");
+				collectFragment=(CollectionSegment_Fragment)fm.findFragmentByTag("collection");
+				top10Fragment =(Top10_Fragment) fm.findFragmentByTag("top10");
+				hotFragment=(HotSegment_Fragment) fm.findFragmentByTag("hot");
 				meFragment = (Me_Fragment) fm.findFragmentByTag("me");
 				ft=fm.beginTransaction();
 				
@@ -56,10 +54,12 @@ public class MainActivity extends FragmentActivity {
 				 if(homeFragment!=null)
 					 ft.detach(homeFragment);
 				 /** 如果存在Detaches掉 */
-				 if(wallFragment!=null)
-					 ft.detach(wallFragment);
-				 if(messageFragment!=null)
-					 ft.detach(messageFragment);
+				 if(collectFragment!=null)
+					 ft.detach(collectFragment);
+				 if(top10Fragment!=null)
+					 ft.detach(top10Fragment);
+				 if(hotFragment!=null)
+					 ft.detach(hotFragment);
 				 if(meFragment!=null)
 					 ft.detach(meFragment);
 				 
@@ -68,34 +68,40 @@ public class MainActivity extends FragmentActivity {
                          isTabHome();
                          CURRENT_TAB = 1;
                          
-                 /** 如果当前选项卡是wall */
-                 }else if(tabId.equalsIgnoreCase("wall")){        
-                         isTabWall();
+                 /** 如果当前选项卡是collection */
+                 }else if(tabId.equalsIgnoreCase("collection")){        
+                         isTabCollection();
                          CURRENT_TAB = 2;
                          
                  /** 如果当前选项卡是message */
-                 }else if(tabId.equalsIgnoreCase("message")){        
-                         isTabMessage();
+                 }else if(tabId.equalsIgnoreCase("top10")){        
+                         isTabTop10();
                          CURRENT_TAB = 3;
-                         
+                 /** 如果当前选项卡是hot */        
+                 }else if(tabId.equalsIgnoreCase("hot")){  
+                	 	isTabHot();
+                	 	 CURRENT_TAB = 4;
                  /** 如果当前选项卡是me */
                  }else if(tabId.equalsIgnoreCase("me")){        
                          isTabMe();
-                         CURRENT_TAB = 4;
+                         CURRENT_TAB = 5;
                  }else{
                 	 switch (CURRENT_TAB) {
                      case 1:
                              isTabHome();
                              break;
                      case 2:
-                             isTabWall();
+                             isTabCollection();
                              break;
                      case 3:
-                             isTabMessage();
+                             isTabTop10();
                              break;
                      case 4:
-                             isTabMe();
+                             isTabHot();
                              break;
+                     case 5:
+	                    	 isTabMe();
+	                         break;
                      default:
                              isTabHome();
                              break;
@@ -117,31 +123,31 @@ public class MainActivity extends FragmentActivity {
 		 tSpecHome.setContent(new DummyTabContent(getBaseContext()));
 		 tabHost.addTab(tSpecHome);
 		 
-		 TabHost.TabSpec tSpecWall=tabHost.newTabSpec("wall");
+		 TabHost.TabSpec tSpecWall=tabHost.newTabSpec("collection");
 		 tSpecWall.setIndicator(tabIndicator2);
 		 tSpecWall.setContent(new DummyTabContent(getBaseContext()));
 		 tabHost.addTab(tSpecWall);
 		 
-		 TabHost.TabSpec tSpecCamera = tabHost.newTabSpec("camera");
+		 TabHost.TabSpec tSpecCamera = tabHost.newTabSpec("top10");
 	        tSpecCamera.setIndicator(tabIndicator3);        
 	        tSpecCamera.setContent(new DummyTabContent(getBaseContext()));
 	        tabHost.addTab(tSpecCamera);
-	        tabIndicator3.setOnClickListener(new OnClickListener(){
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Dialog choose = new Dialog(MainActivity.this,R.style.draw_dialog);
-					 choose.setContentView(R.layout.camera_dialog);
-					// 设置背景模糊参数
-					 WindowManager.LayoutParams winlp=choose.getWindow()
-							 .getAttributes();
-					 winlp.alpha=0.9f;
-					 choose.getWindow();
-					 choose.show(); // 显示弹出框
-				}	        	
-	        });
+//	        tabIndicator3.setOnClickListener(new OnClickListener(){
+//				@Override
+//				public void onClick(View v) {
+//					// TODO Auto-generated method stub
+//					Dialog choose = new Dialog(MainActivity.this,R.style.draw_dialog);
+//					 choose.setContentView(R.layout.camera_dialog);
+//					// 设置背景模糊参数
+//					 WindowManager.LayoutParams winlp=choose.getWindow()
+//							 .getAttributes();
+//					 winlp.alpha=0.9f;
+//					 choose.getWindow();
+//					 choose.show(); // 显示弹出框
+//				}	        	
+//	        });
 	        
-	        TabHost.TabSpec tSpecMessage = tabHost.newTabSpec("message");
+	        TabHost.TabSpec tSpecMessage = tabHost.newTabSpec("hot");
 	        tSpecMessage.setIndicator(tabIndicator4);      
 	        tSpecMessage.setContent(new DummyTabContent(getBaseContext()));
 	        tabHost.addTab(tSpecMessage);
@@ -161,24 +167,31 @@ public class MainActivity extends FragmentActivity {
                 }
     }
     
-    public void isTabWall(){
+    public void isTabCollection(){
             
-            if(wallFragment==null){
-                        ft.add(R.id.realtabcontent,new Wall_Fragment(), "wall");                                                
+            if(collectFragment==null){
+                        ft.add(R.id.realtabcontent,new CollectionSegment_Fragment(), "collection");                                                
                 }else{
-                        ft.attach(wallFragment);                                                
+                        ft.attach(collectFragment);                                                
                 }
     }
     
-    public void isTabMessage(){
+    public void isTabTop10(){
             
-            if(messageFragment==null){
-                        ft.add(R.id.realtabcontent,new Message_Fragment(), "message");                                                
+            if(top10Fragment==null){
+                        ft.add(R.id.realtabcontent,new Top10_Fragment(), "top10");                                                
                 }else{
-                        ft.attach(messageFragment);                                                
+                        ft.attach(top10Fragment);                                                
                 }
     }
     
+    public void isTabHot(){
+    	if(hotFragment==null){
+    		ft.add(R.id.realtabcontent, new HotSegment_Fragment(), "hot");
+    	}else{
+    		ft.attach(hotFragment);
+    	}
+    }
     public void isTabMe(){
             
             if(meFragment==null){
@@ -209,21 +222,21 @@ public class MainActivity extends FragmentActivity {
 		 TextView tvTab2 = (TextView)tabIndicator2.getChildAt(1);
 		 ImageView ivTab2 = (ImageView)tabIndicator2.getChildAt(0);
 		 ivTab2.setBackgroundResource(R.drawable.selector_mood_wall);
-		 tvTab2.setText(R.string.buttom_wall);
+		 tvTab2.setText(R.string.buttom_collect);
 		 
 		 tabIndicator3 = (RelativeLayout) LayoutInflater.from(this)
-		                 .inflate(R.layout.tab_indicator_camera, tw, false);
+		                 .inflate(R.layout.tab_indicator, tw, false);
 		 TextView tvTab3 = (TextView)tabIndicator3.getChildAt(1);
 		 ImageView ivTab3 = (ImageView)tabIndicator3.getChildAt(0);
 		 ivTab3.setBackgroundResource(R.drawable.selector_mood_photograph);
-		 tvTab3.setText(R.string.buttom_camera);
+		 tvTab3.setText(R.string.buttom_top10);
 		  
 		 tabIndicator4 = (RelativeLayout) LayoutInflater.from(this)
 		                 .inflate(R.layout.tab_indicator, tw, false);
 		 TextView tvTab4 = (TextView)tabIndicator4.getChildAt(1);
 		 ImageView ivTab4 = (ImageView)tabIndicator4.getChildAt(0);
 		 ivTab4.setBackgroundResource(R.drawable.selector_mood_message);
-		 tvTab4.setText(R.string.buttom_message);
+		 tvTab4.setText(R.string.buttom_hot);
 		 
 		 tabIndicator5 = (RelativeLayout) LayoutInflater.from(this)
 		                 .inflate(R.layout.tab_indicator, tw, false);

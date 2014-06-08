@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Me_Fragment extends Fragment {
+public class CollectionSegment_Fragment extends Fragment{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -17,7 +17,6 @@ public class Me_Fragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		return inflater.inflate(R.layout.tabfrag_me, container, false);
+		return inflater.inflate(R.layout.tabfrag_collect, container, false);
 	}
-
 }

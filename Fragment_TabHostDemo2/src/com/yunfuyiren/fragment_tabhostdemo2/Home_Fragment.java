@@ -17,7 +17,7 @@ public class Home_Fragment extends Fragment{
      public View onCreateView(LayoutInflater inflater, ViewGroup container,
                      Bundle savedInstanceState) {
              // TODO Auto-generated method stub
-             return inflater.inflate(R.layout.moodhome, container, false);
+             return inflater.inflate(R.layout.tabfrag_home, container, false);
      }
 
 }
