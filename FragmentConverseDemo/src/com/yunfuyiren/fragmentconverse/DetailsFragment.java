@@ -16,6 +16,7 @@ public class DetailsFragment extends Fragment{
 		DetailsFragment f=new DetailsFragment();
 		//Supply index input as an argument
 		Bundle args=new Bundle();
+		//向Bundle管道传入参数
 		args.putInt("index", index);
 		//给Fragment初始化参数
 		f.setArguments(args);

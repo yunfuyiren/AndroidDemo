@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BlogDemo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+  	<string name="main_home">博客</string>
+    <string name="main_news">新闻</string>
+    <string name="main_search">搜索</string>
+	<string name="main_rss">订阅</string>
+    <string name="main_more">更多</string>
+    
+    <!--以下用于存放SharedPreferences的Key-->
+	<string name="preferences_key">currentTab</string>
+	<!--启动tab-->
+	<string name="preferences_current_tab">cnblogs_start_tab</string>
+	
+	<!-- 浏览模式：0-图文 1-文字 -->
+	<string name="config_pic_mode">图文模式</string>
+    <string name="config_text_mode">文字模式</string>
+</resources>
