@@ -31,13 +31,13 @@
 	    android:layout_height="match_parent"
 	    >
 		<!--拖动加载-->
-		<!--<com.example.controls.PullToRefreshListView 
+		<com.example.controls.PullToRefreshListView 
 		     android:id="@+id/blog_list"
 		     style="@style/listview_style">
 		 </com.example.controls.PullToRefreshListView>
 		 <ProgressBar
 			android:id="@+id/blogList_progressBar"
 			style="@style/body_progressbar_style"
-		 />-->
+		 />
 	</FrameLayout>
 </LinearLayout>

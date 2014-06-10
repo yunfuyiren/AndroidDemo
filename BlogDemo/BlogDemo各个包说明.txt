@@ -1,0 +1,26 @@
+	主类无二级包名，包括各个TabActivity
+
+adapter包
+	存储在每个TabActivity中要ListView绑定的类，如BlogListAdapter，UserListAdapter
+
+entity包
+	存储每个TabActivity中对应内容的实体类，如Blog，User
+	（被BlogListAdapter，BlogActivity类调用）
+
+cache包
+	存储图片在内存动态加载类
+	AsyncImageLoader类实现了图片的多线程异步加载（用到SoftReference）
+		（被BlogListAdapter类调用）
+	ImageCacher保存缓存的图片类
+		（被AsyncImageLoader类调用）
+
+controls包
+	拖动加载类，在ListView中当屏幕滑动到最上端或最下端自动刷新
+	重写ListView控件，增加了头部，状态栏等控件。(被各个TabActivity类调用)	
+
+utility包
+	NetHelper 获取DefaultHttpClient实例（被AsyncImageLoader调用）
+	FileAccess 创建文件夹（被NetHelper 调用）
+
+core包
+	Config配置类 （被ImageCacher调用）
