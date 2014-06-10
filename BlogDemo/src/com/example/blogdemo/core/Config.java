@@ -12,4 +12,6 @@ public class Config {
 	
 	public static final String DB_FILE_NAME="BlogDemo_db";//数据库文件名
 	public static final String APP_PACKAGE_NAME="com.example.blogdemo";//程序包名
+	
+	public static final int BLOG_PAGE_SIZE = 10;// 博客分页条数
 }
