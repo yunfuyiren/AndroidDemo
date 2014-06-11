@@ -49,8 +49,11 @@ public class MyAdapter extends BaseAdapter{
 	@Override
 	public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
 		// TODO Auto-generated method stub
-		paramView=LayoutInflater.from(context)   // 创建视图容器并设置上下文  
-				.inflate(R.layout.item, null);    // 获取list_item布局文件的视图
+		if(paramView==null)
+		{
+			paramView=LayoutInflater.from(context)   // 创建视图容器并设置上下文  
+					.inflate(R.layout.item, paramViewGroup,false);    // 获取list_item布局文件的视图
+		}				
 		//通过view来得到Item中每个控件的操作权
 		TextView name=(TextView)paramView.findViewById(R.id.name);
 		TextView sex=(TextView)paramView.findViewById(R.id.sex);
